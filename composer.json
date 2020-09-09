@@ -16,7 +16,7 @@
   },
   "autoload": {
     "psr-4": {
-      "MercadoLivre": "src/MercadoLivre"
+      "App\\": "src/MercadoLivre"
     }
   },
   "minimum-stability": "dev",
