@@ -16,7 +16,7 @@
   },
   "autoload": {
     "psr-4": {
-      "MercadoLivre": "src/"
+      "MercadoLivre": "src/MercadoLivre"
     }
   },
   "minimum-stability": "dev",
