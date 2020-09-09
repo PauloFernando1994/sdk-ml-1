@@ -1,16 +1,15 @@
 {
     "name": "paulofernando1994/sdk-ml-1",
-    "description": "Set trusted proxies for Laravel",
-    "keywords": ["proxy", "trusted proxy", "load balancing"],
+    "description": "sdk ml",
+    "keywords": [""],
     "license": "MIT",
     "authors": [
         {
-            "name": "Chris Fidao"
+            "name": "Paulo Fernando"
         }
     ],
     "require": {
-        "php": ">=5.4.0",
-        "illuminate/contracts": "^5.0|^6.0|^7.0|^8.0"
+        "php": ">=7.2.0"
     },
     "require-dev": {
         "illuminate/http": "^5.0|^6.0|^7.0|^8.0",
@@ -19,14 +18,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Fideloper\\Proxy\\": "src/"
-        }
-    },
-    "extra": {
-        "laravel": {
-            "providers": [
-                "Fideloper\\Proxy\\TrustedProxyServiceProvider"
-            ]
+            "MercadoLivre": "src/"
         }
     },
     "minimum-stability": "dev",
