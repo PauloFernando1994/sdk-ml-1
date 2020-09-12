@@ -112,5 +112,10 @@ class TokenAccess
         return new Site();
     }
 
+    public function products()
+    {
+        return new Search();
+    }
+
 
 }
