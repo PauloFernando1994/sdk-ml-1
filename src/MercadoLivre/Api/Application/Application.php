@@ -24,7 +24,7 @@ class Application implements UrlSite
         if (!is_string(env('APP_ID'))) throw new Exception('Esperando um INT em $appId');
         if (!is_string(env('CLIENT_ID'))) throw new Exception('Esperando uma string em $clientSecret');
 
-        $http = Http::get(self::CORE[env('SITE_ID')] . self::APP . env('APP_ID'));
+        $http = Http::get(self::CORE[env('LANG')] . self::APP . env('APP_ID'));
 
         if ($http->failed()) {
             $this->failed = $http->object();
@@ -208,7 +208,7 @@ class Application implements UrlSite
     public function getCore()
     {
         return new Uri([
-            'core' => self::CORE[env('SITE_ID', 'br')],
+            'core' => self::CORE[env('LANG', 'br')],
             'auth' => self::AUTH
         ], $this->app);
     }

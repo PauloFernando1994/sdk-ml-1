@@ -35,7 +35,6 @@ class Uri
      */
     public function auth($patch = '/', $redirect = true)
     {
-
         $uri = $this->auth . '&client_id=' . $this->app->id . '&redirect_uri=' . $this->app->callback_url . $patch;
 
         if ($redirect) {
@@ -43,7 +42,6 @@ class Uri
         }
 
         return $uri;
-
     }
 
     /**
@@ -165,8 +163,9 @@ class Uri
      * @param $siteId
      * @return string
      */
-    public function listingTypes($siteId)
+    public function listingTypes($siteId = null)
     {
+        if (is_null($siteId)) $siteId = env('SITE_ID');
         return $this->core . "/sites/{$siteId}/listing_types";
     }
 
@@ -174,8 +173,9 @@ class Uri
      * @param string $siteId
      * @return string
      */
-    public function listingExposures(string $siteId)
+    public function listingExposures(string $siteId = null)
     {
+        if (is_null($siteId)) $siteId = env('SITE_ID');
         return $this->core . "/sites/{$siteId}/listing_exposures";
     }
 
@@ -183,8 +183,9 @@ class Uri
      * @param string $siteId
      * @return string
      */
-    public function listingPrices(string $siteId)
+    public function listingPrices(string $siteId = null)
     {
+        if (is_null($siteId)) $siteId = env('SITE_ID');
         return $this->core . "/sites/{$siteId}/listing_prices";
     }
 
@@ -192,8 +193,9 @@ class Uri
      * @param string $siteId
      * @return string
      */
-    public function categories(string $siteId)
+    public function categories(string $siteId = null)
     {
+        if (is_null($siteId)) $siteId = env('SITE_ID');
         return $this->core . "/sites/{$siteId}/categories";
     }
 
@@ -219,8 +221,9 @@ class Uri
      * @param string $siteId
      * @return string
      */
-    public function predictorCategory(string $siteId)
+    public function predictorCategory(string $siteId = null)
     {
+        if (is_null($siteId)) $siteId = env('SITE_ID');
         return $this->core . "/sites/{$siteId}/category_predictor/predict";
     }
 
@@ -234,14 +237,40 @@ class Uri
     }
 
     /**
-     * @param string $siteId
      * @param string $listingTypeId
+     * @param string|null $siteId
      * @return string
      */
-    public function categoryListingTypes(string $siteId, string $listingTypeId)
+    public function categoryListingTypes(string $listingTypeId, string $siteId = null)
     {
+        if (is_null($siteId)) $siteId = env('SITE_ID');
         return $this->core . "/sites/{$siteId}/listing_types/{$listingTypeId}";
     }
+
+
+    public function search(string $siteId = null)
+    {
+
+        if (is_null($siteId)) $siteId = env("SITE_ID");
+
+        return $this->core . "/sites/$siteId/search";
+    }
+
+    public function myItems(int $userId)
+    {
+        return $this->core . "/users/$userId/items/search";
+    }
+
+    public function myUsersMultiply()
+    {
+        return $this->core . "/users";
+    }
+
+    public function myItemsMultiply()
+    {
+        return $this->core . "/items";
+    }
+
 
 }
 

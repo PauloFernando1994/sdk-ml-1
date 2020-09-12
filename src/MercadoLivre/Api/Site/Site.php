@@ -35,11 +35,12 @@ final class Site
     }
 
     /**
+     * @param $url
      * @return object
      */
-    public function getDomains()
+    public function getDomains($url)
     {
-        $http = Http::get($this->url->domains('mercadolivre.com.br'));
+        $http = Http::get($this->url->domains($url));
 
         if ($http->failed() && $http->serverError()) throw new Exception($http->body());
         return $http->object();
@@ -49,7 +50,7 @@ final class Site
      * @param string $siteId
      * @return object
      */
-    public function getListingTypes(string $siteId)
+    public function getListingTypes(string $siteId = null)
     {
         $http = Http::get($this->url->categories($siteId));
 
@@ -58,11 +59,11 @@ final class Site
     }
 
     /**
-     * @param string $siteId
      * @param array $params
+     * @param string|null $siteId
      * @return object
      */
-    public function getListingExposures(string $siteId, array $params = [])
+    public function getListingExposures(array $params = [], string $siteId = null)
     {
         $http = Http::get($this->url->listingExposures($siteId), $params);
 
@@ -71,12 +72,12 @@ final class Site
     }
 
     /**
-     * @param string $siteId
      * @param array $params
+     * @param string|null $siteId
      * @return object
      */
 
-    public function getListingPrices(string $siteId, array $params = [])
+    public function getListingPrices(array $params = [], string $siteId = null)
     {
         $http = Http::get($this->url->listingPrices($siteId), $params);
 
@@ -86,11 +87,11 @@ final class Site
     }
 
     /**
-     * @param string $siteId
      * @param array $params
+     * @param string|null $siteId
      * @return object
      */
-    public function getCategories(string $siteId, array $params = [])
+    public function getCategories(array $params = [], string $siteId = null)
     {
 
         $http = Http::get($this->url->categories($siteId), $params);
@@ -125,10 +126,10 @@ final class Site
 
     /**
      * @param string $title
-     * @param string $siteId
+     * @param string|null $siteId
      * @return object
      */
-    public function getPredictorCategory(string $title, string $siteId)
+    public function getPredictorCategory(string $title, string $siteId = null)
     {
         $http = Http::get($this->url->predictorCategory($siteId), [
             'title' => urlencode($title)
@@ -152,13 +153,13 @@ final class Site
     }
 
     /**
-     * @param string $siteId
      * @param string $listingTypeId
+     * @param string|null $siteId
      * @return object
      */
-    public function getConfigListing(string $siteId, string $listingTypeId)
+    public function getConfigListing(string $listingTypeId, string $siteId = null)
     {
-        $http = Http::get($this->url->categoryListingTypes($siteId, $listingTypeId));
+        $http = Http::get($this->url->categoryListingTypes($listingTypeId, $siteId));
 
         if ($http->failed() && $http->serverError()) throw new Exception($http->body());
         return $http->object();

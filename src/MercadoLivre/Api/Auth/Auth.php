@@ -23,7 +23,7 @@ class Auth implements UrlSite
         if (!env('APP_ID')) throw new Exception('Defina o App ID no seu arquivo .env');
         if (!env('CLIENT_ID')) throw new Exception('Defina o App CLIENT_ID no seu arquivo .env');
 
-        $this->site_id = self::CORE[env('SITE_ID', 'br')];
+        $this->site_id = self::CORE[env('LANG', 'br')];
         $this->appId = env('APP_ID');
         $this->clientSecret = env('CLIENT_ID');
 
